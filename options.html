@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Dagrooster</title>
+		<link href='http://fonts.googleapis.com/css?family=Coming+Soon&v1' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Cabin:regular,regularitalic,bold&v1' rel='stylesheet' type='text/css'>
+		<link  href="options.css" rel="stylesheet" type="text/css" >
+		<script type="text/JavaScript">
+			function toggle(id) {
+				var state = document.getElementById(id).style.display;
+					if (state == 'block') {
+						document.getElementById(id).style.display = 'none';
+					} else {
+						document.getElementById(id).style.display = 'block';
+					}
+			}
+			function verwerk(form) {
+				var klas = form.klas.value;
+				if (form.beta.checked==true) {
+				var beta='true';
+				}
+				else {
+				var beta='false';
+				}
+				alert("De instellingen zijn opgeslagen");
+				localStorage.setItem('beta',beta);
+				localStorage.setItem('klas',klas);
+				localStorage.setItem('opgeslagen',"ja");
+				window.location.reload()
+			}
+			function savedSettings(){
+				var savedklas = document.getElementById('klas');
+				if(localStorage.getItem('klas')=="4A1") {
+				savedklas.selectedIndex = 0; }
+				else if(localStorage.getItem('klas')=="4A2") {
+				savedklas.selectedIndex = 1; }
+				
+				var sbeta = localStorage.getItem('beta');
+				if (sbeta=="true") {
+				beta.checked=true;
+				}
+				else {
+				beta.checked=false;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="alles">
+			<div id="info">
+				<br>
+				<p><img src="128x128.png"/>
+				<p>
+				Dagrooster Extensie
+				<br>
+				Door: Matthew van Rijn en Martijn Kersloot
+				</p>
+				<p>
+				Versie: <strong>5.22</strong>
+				</p>
+				<p>
+				<a href="#" onclick="toggle('instel1');"><strong>Instellingen</strong></a>
+				</p>
+			</div>
+			<div id="instel1">
+					<form name="instellingen" action="#" method="GET">
+						<table border='0' height='150px' width='480px'>
+							<tr>
+								<td>
+									Algemeen:
+									<br>
+									Klas:
+									<select name="klas" id="klas">
+										<option value="4A1">4A1</option>
+										<option value="4A2">4A2</option>
+									</select>
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									Dagrooster Bèta:
+									<br>
+									<input type="checkbox" name="beta" id="beta" value="ja"/>Inschakelen<br>
+								</td>
+								<td style='text-align:right'>
+									<input type="button" name="knop" value="Opslaan" onclick="verwerk(this.form);"/>
+								</td>
+							</tr>
+						</table>
+					</form>				
+			</div>
+		</div>
+		<script type="text/JavaScript">
+		if(localStorage.getItem('opgeslagen')=="ja")
+		{
+		toggle('instel1');
+		localStorage.removeItem('opgeslagen')
+		}
+		savedSettings();
+		</script>
+	</body>
+</html>
