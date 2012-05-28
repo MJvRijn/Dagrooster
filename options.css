@@ -2,7 +2,7 @@
 {
 position:relative;
 width:500px;
-height:750px;
+height:650px;
 margin-top:10%;
 margin-bottom:auto;
 margin-left:auto;
@@ -14,7 +14,7 @@ position:absolute;
 top:0px;
 left:0px;
 right:0px;
-bottom:150px;
+bottom:50px;
 border-radius:10px;
 background-color:#f0b625;
 font-size:22px;
@@ -34,6 +34,7 @@ text-align:left;
 display:none;
 font-family: 'Coming Soon', arial, serif;
 padding-left:10px;
+padding-top:4px
 }
 a:link {
 color: blue;
